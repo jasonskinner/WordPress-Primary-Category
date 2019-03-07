@@ -1,0 +1,1 @@
+{"version":3,"sources":["jss-category-metabox.scss","jss-category-metabox.css"],"names":[],"mappings":"AAAA,OCCE,2BAA2B,EAAA;;AAC7B,qRAAqR","file":"jss-category-metabox.css","sourcesContent":["body{\n  background: #999 !important;\n}"]}
