@@ -34,15 +34,14 @@ if ( ! defined( 'JSS_URL' ) ) {
 	define( 'JSS_URL', trailingslashit( plugins_url( '', __FILE__ ) ) );
 }
 
-/**
- * Core plugin class
- */
-require_once JSS_PATH . 'src/class-jss-primary-category.php';
-
 /*
  * Core admin class
  */
 if ( is_admin() ) {
-	require_once JSS_PATH . 'admin/class-jss-primary-category-admin.php';
-	require_once JSS_PATH . 'admin/metabox/class-metabox-primary-category.php';
+	require_once JSS_PATH . 'lib/class-jss-primary-category-admin.php';
 }
+
+/**
+ * Core plugin class
+ */
+require_once JSS_PATH . 'lib/class-jss-primary-category.php';
