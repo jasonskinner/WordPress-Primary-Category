@@ -52,19 +52,6 @@ if ( ! class_exists( 'JSS_Primary_Category' ) ) {
 			require_once JSS_PATH . 'lib/class-metabox-primary-category.php';
 			require_once JSS_PATH . 'lib/class-jss-primary-term.php';
 		}
-
-		protected function get_primary_category( $post = null ) {
-			$post = get_post( $post );
-
-			if ( null === $post ) {
-				return false;
-			}
-
-			$primary_term = new JSS_Primary_Term( 'category', $post->ID );
-
-			return $primary_term->get_primary_term();
-		}
-
 	}
 
 	JSS_Primary_Category::get_instance();
