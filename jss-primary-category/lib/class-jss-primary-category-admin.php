@@ -129,12 +129,15 @@ if ( ! class_exists( 'JSS_Primary_Category_Admin' ) ) {
 			wp_enqueue_style( 'jss-category-metabox-js' );
 		}
 
+		/**
+		 * Get category
+		 * @param $post_id
+		 *
+		 * @return array
+		 */
 		public function get_term_object( $post_id ) {
 			return get_the_category( $post_id );
 		}
-
-
-
 	}
 
 	JSS_Primary_Category_Admin::get_instance();
