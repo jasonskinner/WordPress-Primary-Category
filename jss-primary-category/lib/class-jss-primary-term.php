@@ -89,6 +89,4 @@ class JSS_Primary_Term {
 		// return.
 		return $terms;
 	}
-
-
 }

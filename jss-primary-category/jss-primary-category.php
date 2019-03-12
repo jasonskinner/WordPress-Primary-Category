@@ -34,6 +34,11 @@ if ( ! defined( 'JSS_URL' ) ) {
 	define( 'JSS_URL', trailingslashit( plugins_url( '', __FILE__ ) ) );
 }
 
+/**
+ * Core Register Test Post Type
+ */
+require_once JSS_PATH . 'lib/class-jss-register-cpt.php';
+
 /*
  * Core admin class
  */
@@ -46,7 +51,4 @@ if ( is_admin() ) {
  */
 require_once JSS_PATH . 'lib/class-jss-primary-category.php';
 
-/**
- * Core Register Test Post Type
- */
-require_once JSS_PATH . 'lib/class-jss-register-cpt.php';
+

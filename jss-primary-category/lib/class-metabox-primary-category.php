@@ -61,7 +61,7 @@ class JSS_Primary_Category_Metabox {
 		?>
 		<label for="jss-primary-category-field">Select a Primary Category</label>
 		<br>
-		<?php $this->set_primary_category( $admin->get_current_id() ); ?>
+		<?php $this->get_primary_category( $admin->get_current_id() ); ?>
 		<select name="jss-primary-category-field" id="wporg_field" class="postbox">
 			<option value="">Select</option>
 			<?php
