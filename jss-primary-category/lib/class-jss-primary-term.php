@@ -50,7 +50,7 @@ class JSS_Primary_Term {
 
 		$terms = $this->get_term_id();
 
-		if ( ! in_array( $primary_term_io, wp_list_pluck( $terms, 'term_id' ), true ) ) {
+		if ( ! in_array( $primary_term_id, wp_list_pluck( $terms, 'term_id' ), true ) ) {
 			$primary_term_id = false;
 		}
 

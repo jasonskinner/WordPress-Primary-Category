@@ -34,9 +34,6 @@ var rename       = require('gulp-rename');
 var sourcemaps   = require('gulp-sourcemaps');
 var notify       = require('gulp-notify');
 
-var once = require('async-once');
-var del = require('del');
-
 
 /**
  * Task: admin styles

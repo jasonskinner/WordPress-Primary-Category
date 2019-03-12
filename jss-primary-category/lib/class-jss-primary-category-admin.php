@@ -85,7 +85,9 @@ if ( ! class_exists( 'JSS_Primary_Category_Admin' ) ) {
 		 * @return integer
 		 */
 		public function get_current_id() {
-			return filter_input( INPUT_GET, 'post', FILTER_SANITIZE_NUMBER_INT );
+			if ( is_admin() && $this->this_screen() ) {
+				return get_the_ID();
+			}
 		}
 
 		/**
