@@ -92,11 +92,3 @@ gulp.task( 'adminjs', function() {
 gulp.task( 'default', (done) => (
 	gulp.series( 'adminstyles', 'adminjs' )(done)
 ));
-
-/**
- * Watch Tasks.
- */
-gulp.task( 'watch', function(){
-	gulp.watch( 'admin/js/*.js', [ 'adminjs' ] );
-	gulp.watch( 'admin/sass/*.scss', [ 'adminstyles' ] );;
-});

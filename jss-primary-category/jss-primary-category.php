@@ -45,3 +45,8 @@ if ( is_admin() ) {
  * Core plugin class
  */
 require_once JSS_PATH . 'lib/class-jss-primary-category.php';
+
+/**
+ * Core Register Test Post Type
+ */
+require_once JSS_PATH . 'lib/class-jss-register-cpt.php';
