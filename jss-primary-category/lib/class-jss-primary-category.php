@@ -41,6 +41,7 @@ if ( ! class_exists( 'JSS_Primary_Category' ) ) {
 		 * JSS_Primary_Category constructor.
 		 */
 		public function __construct() {
+			// require files.
 			$this->required_files();
 		}
 
@@ -48,10 +49,11 @@ if ( ! class_exists( 'JSS_Primary_Category' ) ) {
 		/**
 		 * Load required files
 		 */
-		public function required_files() {
+		private function required_files() {
 			require_once JSS_PATH . 'lib/class-metabox-primary-category.php';
 			require_once JSS_PATH . 'lib/class-jss-primary-term.php';
 		}
+
 	}
 
 	JSS_Primary_Category::get_instance();

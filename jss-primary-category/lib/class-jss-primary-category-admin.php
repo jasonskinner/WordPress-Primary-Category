@@ -55,7 +55,7 @@ if ( ! class_exists( 'JSS_Primary_Category_Admin' ) ) {
 		 */
 		public function is_post() {
 			/**
-			 * Checks if current screen is post
+			 * Checks current screen
 			 *
 			 * @return bool true or false
 			 */
@@ -70,12 +70,21 @@ if ( ! class_exists( 'JSS_Primary_Category_Admin' ) ) {
 		 * @return bool
 		 */
 		public function this_screen() {
-			$screen = get_current_screen();
-
+			$screen     = get_current_screen();
+			// if it is default post.
 			if ( 'post' === $screen->id ) {
+				// return true.
 				return true;
 			}
 
+			// if cpt is not post and base is post and not a page.
+			if ( 'post' !== $screen->post_type && 'post' === $screen->base && 'page' !== $screen->post_type ) {
+				// if it has default categories.
+				if ( has_category( '' ) ) {
+					// return true.
+					return true;
+				}
+			}
 			return false;
 		}
 
@@ -85,7 +94,9 @@ if ( ! class_exists( 'JSS_Primary_Category_Admin' ) ) {
 		 * @return integer
 		 */
 		public function get_current_id() {
-			if ( is_admin() && $this->this_screen() ) {
+			// if has admin screen.
+			if ( $this->this_screen() ) {
+				// return.
 				return get_the_ID();
 			}
 		}
@@ -96,8 +107,9 @@ if ( ! class_exists( 'JSS_Primary_Category_Admin' ) ) {
 		 * @return mixed
 		 */
 		protected function get_primary_term( $taxonomy_name ) {
+			// get primary term.
 			$primary_term = new JSS_Primary_Term( $taxonomy_name, $this->get_current_id() );
-
+			// return.
 			return $primary_term->get_primary_term();
 		}
 
@@ -136,6 +148,7 @@ if ( ! class_exists( 'JSS_Primary_Category_Admin' ) ) {
 		 * @return array
 		 */
 		public function get_term_object( $post_id ) {
+			// return category.
 			return get_the_category( $post_id );
 		}
 	}

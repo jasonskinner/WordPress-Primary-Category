@@ -46,14 +46,17 @@ class JSS_Primary_Term {
 	 * @return bool|mixed
 	 */
 	public function get_primary_term_id() {
+		// get post meta.
 		$primary_term_id = get_post_meta( $this->post_id, 'jss_primary_taxonomy_' . $this->taxonomy_name, true );
 
+		// get cat id.
 		$terms = $this->get_term_id();
 
+		// if not is array or plucked term_id, bail.
 		if ( ! in_array( $primary_term_id, wp_list_pluck( $terms, 'term_id' ), true ) ) {
 			$primary_term_id = false;
 		}
-
+		// return.
 		return ( $primary_term_id ) ? ( $primary_term_id ) : false;
 	}
 

@@ -5,12 +5,17 @@
  * @package JSS_Primary_Category
  */
 
+// If called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
 class JSS_Primary_Category_Metabox {
 
 	/**
 	 * Post ID of term
 	 *
-	 * @var
+	 * @var $post_id
 	 */
 	protected $post_id;
 
@@ -30,10 +35,13 @@ class JSS_Primary_Category_Metabox {
 	 */
 	public function add_primary_category_metabox() {
 		$category_admin = new JSS_Primary_Category_Admin();
+		// if we do not have admin screen, bail.
 		if ( ! $category_admin->is_post() ) {
+			// return.
 			return;
 		}
 
+		// add metabox.
 		add_meta_box(
 			'jss_primary_category',
 			'Primary Category',
@@ -42,7 +50,6 @@ class JSS_Primary_Category_Metabox {
 			'side',
 			'high',
 			null
-
 		);
 	}
 
@@ -52,10 +59,13 @@ class JSS_Primary_Category_Metabox {
 	 * @param $post
 	 */
 	public function add_primary_category_metabox_html( $post ) {
-		$admin      = new JSS_Primary_Category_Admin();
+		$admin = new JSS_Primary_Category_Admin();
+		// get term object.
 		$categories = $admin->get_term_object( $post->ID );
-		$value      = $this->get_primary_category( $admin->get_current_id() );
+		// get current set primary category.
+		$value = $this->get_primary_category( $admin->get_current_id() );
 
+		// add nonce.
 		wp_nonce_field( 'save_primary_category', 'primary-category-dropdown-nonce' );
 
 		?>
@@ -83,6 +93,7 @@ class JSS_Primary_Category_Metabox {
 		$admin   = new JSS_Primary_Category_Admin();
 		$post_id = $admin->get_current_id();
 
+		// return save_primary_category function
 		return $this->save_primary_category( $post_id );
 	}
 
@@ -110,6 +121,7 @@ class JSS_Primary_Category_Metabox {
 		$old_meta = get_post_meta( $post_id, 'jss-primary-category', true );
 		$new_meta = sanitize_text_field( wp_unslash( $_POST['jss-primary-category-field'] ) );
 
+		// if it has meta to add or if not previous meta. Delete if necessary.
 		if ( $new_meta && $new_meta !== $old_meta ) {
 			update_post_meta( $post_id, 'jss-primary-category', $new_meta );
 		} elseif ( '' === $new_meta && $old_meta ) {
@@ -125,8 +137,9 @@ class JSS_Primary_Category_Metabox {
 	 * @return mixed
 	 */
 	public function get_primary_category( $post_id ) {
+		// get primary category even if empty.
 		$value = get_post_meta( $post_id, 'jss-primary-category', true );
-
+		// return post meta value.
 		return $value;
 	}
 }

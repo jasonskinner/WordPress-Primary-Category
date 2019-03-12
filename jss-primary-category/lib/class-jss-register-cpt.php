@@ -1,9 +1,15 @@
 <?php
 
+// If called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
+}
+
 /**
  * Register CPT
  *
  * This could be more object oriented with params, but it is just for a test
+ * Used to test conditionals and functionality against another created CPT without categories
  */
 
 class JSS_Register_Test_CPT {
