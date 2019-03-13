@@ -56,6 +56,7 @@ class JSS_Primary_Term {
 		if ( ! in_array( $primary_term_id, wp_list_pluck( $terms, 'term_id' ), true ) ) {
 			$primary_term_id = false;
 		}
+
 		// return.
 		return ( $primary_term_id ) ? ( $primary_term_id ) : false;
 	}
@@ -64,6 +65,7 @@ class JSS_Primary_Term {
 	 * Save the new primary term
 	 *
 	 * @param $new_primary_term_id
+	 *
 	 * @return void
 	 */
 	public function save_primary_term( $new_primary_term_id ) {

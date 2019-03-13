@@ -13,7 +13,7 @@ if ( ! defined( 'WPINC' ) ) {
 if ( ! class_exists( 'JSS_Primary_Category_Admin' ) ) {
 
 	/**
-	 * Admin Class
+	 * JSS_Primary_Category_Admin Class
 	 */
 	class JSS_Primary_Category_Admin {
 		/**
@@ -46,6 +46,7 @@ if ( ! class_exists( 'JSS_Primary_Category_Admin' ) ) {
 		 */
 		public function __construct() {
 			$this->register_hooks();
+			add_action( 'current_screen', array( $this, 'this_screen' ) );
 		}
 
 		/**
@@ -60,8 +61,6 @@ if ( ! class_exists( 'JSS_Primary_Category_Admin' ) ) {
 			 * @return bool true or false
 			 */
 			return $this->this_screen();
-
-			add_action( 'current_screen', 'this_screen' );
 		}
 
 		/**
@@ -70,7 +69,7 @@ if ( ! class_exists( 'JSS_Primary_Category_Admin' ) ) {
 		 * @return bool
 		 */
 		public function this_screen() {
-			$screen     = get_current_screen();
+			$screen = get_current_screen();
 			// if it is default post.
 			if ( 'post' === $screen->id ) {
 				// return true.
@@ -85,6 +84,7 @@ if ( ! class_exists( 'JSS_Primary_Category_Admin' ) ) {
 					return true;
 				}
 			}
+
 			return false;
 		}
 
@@ -109,6 +109,7 @@ if ( ! class_exists( 'JSS_Primary_Category_Admin' ) ) {
 		protected function get_primary_term( $taxonomy_name ) {
 			// get primary term.
 			$primary_term = new JSS_Primary_Term( $taxonomy_name, $this->get_current_id() );
+
 			// return.
 			return $primary_term->get_primary_term();
 		}
@@ -143,6 +144,7 @@ if ( ! class_exists( 'JSS_Primary_Category_Admin' ) ) {
 
 		/**
 		 * Get category
+		 *
 		 * @param $post_id
 		 *
 		 * @return array

@@ -93,7 +93,7 @@ class JSS_Primary_Category_Metabox {
 		$admin   = new JSS_Primary_Category_Admin();
 		$post_id = $admin->get_current_id();
 
-		// return save_primary_category function
+		// return save_primary_category function.
 		return $this->save_primary_category( $post_id );
 	}
 
@@ -139,6 +139,7 @@ class JSS_Primary_Category_Metabox {
 	public function get_primary_category( $post_id ) {
 		// get primary category even if empty.
 		$value = get_post_meta( $post_id, 'jss-primary-category', true );
+
 		// return post meta value.
 		return $value;
 	}

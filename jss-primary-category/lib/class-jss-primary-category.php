@@ -15,12 +15,7 @@ if ( ! class_exists( 'JSS_Primary_Category' ) ) {
 	 * Main Class JSS_Primary_Category
 	 */
 	class JSS_Primary_Category {
-		/**
-		 * Create instance of JSS_Primary_Category_Admin
-		 *
-		 * @var JSS_Primary_Category_Admin
-		 */
-		protected static $instance = null;
+
 
 		/**
 		 * Return instance of class JSS_Primary_Category_Admin
@@ -52,9 +47,10 @@ if ( ! class_exists( 'JSS_Primary_Category' ) ) {
 		private function required_files() {
 			require_once JSS_PATH . 'lib/class-metabox-primary-category.php';
 			require_once JSS_PATH . 'lib/class-jss-primary-term.php';
+			require_once JSS_PATH . 'lib/class-jss-primary-frontend.php';
 		}
 
 	}
 
-	JSS_Primary_Category::get_instance();
+	new JSS_Primary_Category();
 }

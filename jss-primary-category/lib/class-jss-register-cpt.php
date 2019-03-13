@@ -11,16 +11,15 @@ if ( ! defined( 'WPINC' ) ) {
  * This could be more object oriented with params, but it is just for a test
  * Used to test conditionals and functionality against another created CPT without categories
  */
-
 class JSS_Register_Test_CPT {
 	/**
 	 * @var string
 	 *
 	 * Set post type params
 	 */
-	private $type          = 'test';
-	private $slug          = 'tests';
-	private $name          = 'Tests';
+	private $type = 'test';
+	private $slug = 'tests';
+	private $name = 'Tests';
 	private $singular_name = 'Test';
 
 	/**
